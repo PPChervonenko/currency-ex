@@ -13,7 +13,7 @@ export class StorageService {
     }
   }
 
-  static detObject(key: string): Object {
+  static getObject(key: string): Object {
     const item = localStorage.getItem(key);
     return  item && JSON.parse(item);
   }

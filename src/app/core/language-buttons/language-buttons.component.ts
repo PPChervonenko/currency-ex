@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import {LanguageService} from '../../service/language.service';
 
-import { LanguageService } from '../../shared/service/language.service';
+
 
 export interface LanguageList {
     abbreviation: string;
@@ -22,14 +23,9 @@ export class LanguageButtonsComponent implements OnInit {
             gap: '',
         },
         {
-            abbreviation: 'nl',
-            name: 'Dutch',
-            gap: 'ml-1',
-        },
-        {
-            abbreviation: 'tr',
-            name: 'Turkish',
-            gap: 'ml-1 mr-1',
+            abbreviation: 'ru',
+            name: 'Russian',
+            gap: '',
         },
     ];
 

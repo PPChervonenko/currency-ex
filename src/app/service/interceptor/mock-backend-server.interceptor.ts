@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
+import {LoginResponse} from '../../model/user.model';
 
-import { LoginResponse } from '../../interface/user.model';
+
 
 @Injectable()
 export class MockBackendServerInterceptor implements HttpInterceptor {
@@ -17,14 +18,14 @@ export class MockBackendServerInterceptor implements HttpInterceptor {
                         mergeMap(() => {
                             const testUser = [
                                 {
-                                    username: 'user1',
-                                    password: 'pass1',
-                                    fullName: 'John Doe',
+                                    username: 'user',
+                                    password: 'user',
+                                    fullName: 'Jon Connor',
                                 },
                                 {
-                                    username: 'user2',
-                                    password: 'pass2',
-                                    fullName: 'Adam Smith',
+                                    username: 'user1',
+                                    password: 'user1',
+                                    fullName: 'Den Reeves',
                                 },
                             ];
 
@@ -38,14 +39,20 @@ export class MockBackendServerInterceptor implements HttpInterceptor {
                             ) {
                                 const body: LoginResponse = {
                                     token:
-                                        'eyJhbGciOiJIUzI1NiIsInwefwefMSwiZ3VpZCI6IjQ0MDdmOTNjLWRjM' +
-                                        'DEtNDQ2My1hMzhmwefwefLWUxZmJiMWQzMTRmOCIsImV4cCI6MTUxNzU3ODM2' +
-                                        'NCwiZW1haWwiOiJuaWVrLmhlZXplbWFuc0Bmcm9udG1lbi5ubCIsImlhdCI6MTUx' +
-                                        'NzUwefwef3Mjk2NH0.Ykirzr4b7GdsIPGV6PDjCpFHOAqohKazJl5pWJFw',
+                                    'lpEpfCuyuD2g5lI88cJ4eT1VpRQo538e' +
+                                  'Rxyfs2dmPxqPQ6VinXJy3su6SF49nUZS' +
+                                  'EsyTM7RTmWb7dADtAKbmVj7D4VD85JF4' +
+                                  'llBtovJLrdK0j58OUx9Pb3eWoshCVjdN' +
+                                  'HjZEbyRg4UrGYDks335HWbpZhmGMZX69' +
+                                  'V5lNl2VmSgxfPQQrt9PZkH7FBtWjWsCC' +
+                                  'LbuiOUnnuBOGGRz9TohVPKxR0CQ7amfg' +
+                                  '0km96YcJi5tq27zpQ4hsCC01IJhuJDha' +
+                                  'S9DiWEXSf4h57Gmg33wux3ulTHfi1CQy' +
+                                  'jtCv5KqJYKHQT2vlCat80A6eeU0273Dq',
                                     user: {
                                         fullName:
-                                            request.body.username === testUser[0].username ? 'John Doe' : 'Adam Smith',
-                                        username: request.body.username === testUser[0].username ? 'user1' : 'user2',
+                                            request.body.username === testUser[0].username ? 'Jon Connor' : 'Den Reeves',
+                                        username: request.body.username === testUser[0].username ? 'user' : 'user1',
                                     },
                                 };
 

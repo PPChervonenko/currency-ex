@@ -1,12 +1,15 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject, async } from '@angular/core/testing';
 
 import { ExchangeCurrencyService } from './exchange-currency.service';
 
 describe('ExchangeCurrencyService', () => {
-  beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      providers: [ExchangeCurrencyService],
+    });
+  }));
 
-  it('should be created', () => {
-    const service: ExchangeCurrencyService = TestBed.get(ExchangeCurrencyService);
+  it('should be created', inject([ExchangeCurrencyService], (service: ExchangeCurrencyService) => {
     expect(service).toBeTruthy();
-  });
+  }));
 });

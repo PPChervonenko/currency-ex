@@ -1,15 +1,80 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+
+import { ExchangeCurrencyService, PeriodicHistoryElement } from '../../service/exchange-currency.service';
+import {StorageService} from '../../service/storage.service';
+
+
+export interface HistoryElement {
+  id: number;
+  date: string;
+  event: string;
+  actions: string;
+  amount?: number;
+  fromCurrency?: string;
+  toCurrency?: string;
+}
 
 @Component({
   selector: 'app-history',
   templateUrl: './history.component.html',
-  styleUrls: ['./history.component.css']
+  styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
+  public periodicHistoryData: HistoryElement[];
+  public displayedHistoricalColumns: string[] = ['date', 'event', 'actions'];
+  public periodicHistoryDataSource: MatTableDataSource<HistoryElement>;
 
-  constructor() { }
+  constructor(private exchangeCurrencyService: ExchangeCurrencyService, private router: Router) {}
 
   ngOnInit() {
+    this.periodicHistoryData = this.customHistoryData() || [];
+    this.periodicHistoryDataSource = new MatTableDataSource(this.periodicHistoryData);
   }
 
+  customHistoryData() {
+    return this.exchangeCurrencyService.periodicHistoryExchangeRates.map(
+      (item: PeriodicHistoryElement): HistoryElement => {
+        return {
+          id: item.id,
+          date: item.date,
+          event: `Converted an amount of ${item.amount} from ${item.fromCurrency} to ${item.toCurrency}`,
+          actions: '',
+          amount: item.amount,
+          fromCurrency: item.fromCurrency,
+          toCurrency: item.toCurrency,
+        };
+      },
+    );
+  }
+
+  setCurrencyJob(amount: string, fromCurrency: string, toCurrency: string) {
+    this.router.navigate(['converter']);
+
+    this.exchangeCurrencyService.converterForm = new FormGroup({
+      amountControl: new FormControl(amount, [Validators.required]),
+      fromControl: new FormControl(fromCurrency, [Validators.required]),
+      toControl: new FormControl(toCurrency, [Validators.required]),
+    });
+  }
+
+  removeCurrencyItem(element: PeriodicHistoryElement) {
+    this.exchangeCurrencyService.periodicHistoryExchangeRates = this.filterHistoryList(element);
+
+    this.setFilteredDataToStorage();
+
+    this.periodicHistoryDataSource = new MatTableDataSource(this.customHistoryData());
+  }
+
+  filterHistoryList(item: PeriodicHistoryElement): PeriodicHistoryElement[] {
+    return this.exchangeCurrencyService.periodicHistoryExchangeRates.filter(
+      (matchedItem) => matchedItem.id !== item.id,
+    );
+  }
+
+  setFilteredDataToStorage() {
+    StorageService.setObject('exchangeRates', [...this.exchangeCurrencyService.periodicHistoryExchangeRates]);
+  }
 }

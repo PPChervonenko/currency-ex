@@ -1,51 +1,50 @@
 {
-    "main": {
-        "title": "Ik wil ruilen",
-        "general": {
-            "login": "Inloggen",
-            "logout": "Afmelden",
-            "username": "Gebruikersnaam",
-            "password": "Wachtwoord"
-        },
-        "error": {
-            "empty-username": "Gebruikersnaamveld mag niet leeg zijn!",
-            "empty-password": "Wachtwoordveld kan niet leeg zijn!",
-            "invalid-credentials": "Gebruikersnaam of wachtwoord klopt niet!",
-            "no-history": "Er zijn nog geen historische gegevens te zien!",
-            "no-data": "Er zijn geen gegevens voor de geselecteerde tijdlijn!"
-        },
-        "nav": {
-            "currency": "Currency",
-            "exchange": "Exchange",
-            "currency-exchange": "VALUTAWISSELAAR",
-            "view-exchange-history": "CONVERSIE GESCHIEDENIS"
-        },
-        "exchange-field": {
-            "amount": "Bedrag",
-            "from": "Van",
-            "to": "Naar",
-            "convert": "CONVERTEREN"
-        },
-        "tables": {
-            "exchange-history": "Uitwisselingsgeschiedenis",
-            "duration": "Looptijd",
-            "all": "Alle",
-            "days": "Dagen",
-            "date": "Datum",
-            "exchange-rate": "Wisselkoers",
-            "statistics": "Statistieken",
-            "lowest": "Laagste",
-            "highest": "Hoogste",
-            "average": "Gemiddeld",
-            "conversion-history": "Uitwisselingsgeschiedenis",
-            "event": "Evenement",
-            "actions": "Acties",
-            "view": "Bekijken",
-            "delete": "Verwijderen",
-            "converted-an-amount-of": "Een hoeveelheid geconverteerd",
-            "from": "van",
-            "to": "naar"
-        }
+  "main": {
+    "title": "Я хочу конвертировать",
+    "general": {
+      "login": "Войти",
+      "logout": "Выйти",
+      "username": "Имя пользователя",
+      "password": "Пароль"
+    },
+    "error": {
+      "empty-username": "Поле имени пользователя не может быть пустым!",
+      "empty-password": "Поле пароля не может быть пустым!",
+      "invalid-credentials": "Неверное имя пользователя или пароль!",
+      "no-history": "Нет предистории по обмену, чтобы показать!",
+      "no-data": "Нет данных для выбранной временной шкалы!"
+    },
+    "nav": {
+      "currency": "Валюта",
+      "exchange": "Обмен",
+      "currency-exchange": "ВАЛЮТНЫЙ ОБМЕН",
+      "view-exchange-history": "ПОСМОТРЕТЬ ИСТОРИЮ ОБМЕНА"
+    },
+    "exchange-field": {
+      "amount": "Сумма",
+      "from": "от",
+      "to": "до",
+      "convert": "КОНВЕРТ"
+    },
+    "tables": {
+      "exchange-history": "История обмена",
+      "duration": "Продолюжительность",
+      "all": "Все",
+      "days": "Дней",
+      "date": "Дата",
+      "exchange-rate": "Обменный Курс",
+      "statistics": "Статистика",
+      "lowest": "Самый низкий",
+      "highest": "Высокий",
+      "average": "Средний",
+      "conversion-history": "История Обмена",
+      "event": "Событие",
+      "actions": "Действия",
+      "view": "Просмотр",
+      "delete": "Удалить из истории",
+      "converted-an-amount-of": "Преобразованная сумма",
+      "from": "от",
+      "to": "до"
     }
+  }
 }
-
